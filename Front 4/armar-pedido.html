@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link href="css/styles.css" rel="stylesheet" />
+    <!-- Libreria de iconos -->
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet" />
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"> -->
+  </head>
+  <body>
+    <nav class="sidebar close">
+      <header>
+        <div class="text logo">
+          <span class="name"> Ururacer </span>
+          <span class="profe"> Armar pedido</span>
+        </div>
+        <i class="bx bx-menu toggle"></i>
+      </header>
+
+      <div class="menu-bar">
+        <div class="menu">
+          <ul class="menu-links">
+            <li class="nav-link">
+              <a href="/home-aux.html">
+                <i class="bx bxs-cart icon"></i>
+                <span class="text nav-text">Pedidos</span>
+              </a>
+            </li>
+
+            <li class="nav-link">
+              <a href="/lista-clientes-Aux.html">
+                <i class="bx bxs-user icon"></i>
+                <span class="text nav-text">Clientes</span>
+              </a>
+            </li>
+
+            <li class="nav-link">
+              <a href="/lista-cadeterias-Aux.html">
+                <i class="bx bx bxs-truck icon"></i>
+                <span class="text nav-text">Cadeterías</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="bottom-content">
+          <li class="">
+            <a href="#" id="btnLogout">
+              <i class="bx bx-log-out icon"></i>
+              <span class="text nav-text"> Salir</span>
+            </a>
+          </li>
+
+          <li class="mode">
+            <div class="sun-moon">
+              <i class="bx bx-moon icon moon"></i>
+              <i class="bx bx-sun icon sun"></i>
+            </div>
+            <span class="mode-text text">Modo oscuro</span>
+
+            <div class="toggle-switch">
+              <span class="switch"></span>
+            </div>
+          </li>
+        </div>
+      </div>
+    </nav>
+
+    <section class="home">
+      <div>
+        <h1 id="nombreAux">Armar pedido</h1>
+        <p class="text">Aquí puedes controlar el armado del pedido</p>
+      </div>
+
+      <div class="form-group-AP">
+        <form>
+          <div>
+            <label> Fecha:</label>
+            <h4 id="fechaMostrada"></h4>
+          </div>
+          <div>
+            <!-- Mostramos el cliente -->
+            <label for="inputBuscarCliente">Cliente:</label>
+            <input type="hidden" id="clienteSeleccionado" />
+            <h2 id="nombreCliente"></h2>
+          </div>
+          <div class="form-div-row-Special">
+            <button
+              type="button"
+              class="btnConfirmar"
+              id="btnConfirmarPedido"
+              onclick="guardarAvance()">
+              Guardar Avance
+            </button>
+          </div>
+
+          <div>
+            <table class="table" id="tablaArticulos"></table>
+          </div>
+
+          <div>
+            <label for="cadeteriaId">Cadetería:</label>
+            <select id="cadeteriaId" required>
+              <option id="cad"></option>
+            </select>
+          </div>
+
+          <div class="form-div-row-Special">
+            <button
+              type="button"
+              class="btnConfirmar"
+              id="btnConfirmarPedido"
+              onclick="pedidoArmado()">
+              Confirmar Pedido
+            </button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <script src="/js/index.js"></script>
+    <script src="/js/armar-pedido.js"></script>
+    <script src="/js/logout.js"></script>
+
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script> -->
+  </body>
+</html>

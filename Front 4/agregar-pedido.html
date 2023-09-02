@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link href="css/styles.css" rel="stylesheet" />
+    <!-- Libreria de iconos -->
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet" />
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"> -->
+  </head>
+  <body>
+    <nav class="sidebar close">
+      <header>
+        <div class="text logo">
+          <span class="name"> Ururacer </span>
+          <span class="profe"> Nuevo pedido </span>
+        </div>
+        <i class="bx bx-menu toggle"></i>
+      </header>
+
+      <div class="menu-bar">
+        <div class="menu">
+          <!-- <li class="search-box">
+            <i class="bx bx-search icon"></i>
+            <input type="text" name="" id="" placeholder="Buscar.. ." />
+          </li> -->
+
+          <li class="nav-link">
+            <a href="/home-vendedor.html">
+              <i class="bx bxs-cart icon"></i>
+              <span class="text nav-text">Pedidos</span>
+            </a>
+          </li>
+
+          <li class="nav-link">
+            <a href="/lista-clientes-Vendedor.html">
+              <i class="bx bxs-user icon"></i>
+              <span class="text nav-text">Clientes</span>
+            </a>
+          </li>
+
+          <li class="nav-link">
+            <a href="/lista-cadeterias-Vendedor.html">
+              <i class="bx bx bxs-truck icon"></i>
+              <span class="text nav-text">Cadeterías</span>
+            </a>
+          </li>
+
+          <li class="nav-link">
+            <a href="/agregar-grafica.html">
+              <i class="bx bxs-bar-chart-square icon"></i>
+              <span class="text nav-text">Gráficas</span>
+            </a>
+          </li>
+
+          <li class="nav-link">
+            <a href="/password-vendedor.html">
+              <i class="bx bx-fingerprint icon"></i>
+              <span class="text nav-text">Contraseña</span>
+            </a>
+          </li>
+        </div>
+
+        <div class="bottom-content">
+          <li class="">
+            <a href="#" id="btnLogout">
+              <i class="bx bx-log-out icon"></i>
+              <span class="text nav-text"> Salir</span>
+            </a>
+          </li>
+
+          <li class="mode">
+            <div class="sun-moon">
+              <i class="bx bx-moon icon moon"></i>
+              <i class="bx bx-sun icon sun"></i>
+            </div>
+            <span class="mode-text text">Modo oscuro</span>
+
+            <div class="toggle-switch">
+              <span class="switch" onclick="guardarModo()"></span>
+            </div>
+          </li>
+        </div>
+      </div>
+    </nav>
+
+    <section class="home">
+      <div>
+        <h1 id="nombreCliente">Nuevo pedido</h1>
+        <!-- <p class="text">Aquí puedes administrar tus pedidos</p> -->
+      </div>
+
+      <div class="form-group-AP">
+        <form>
+          <!-- Fecha -->
+          <div class="form-date">
+            <label> Fecha:</label>
+            <h4 id="fechaMostrada"></h4>
+          </div>
+
+          <!-- Cliente -->
+
+          <div class="form-div-label">
+            <label for="inputBuscarCliente">Cliente:</label>
+          </div>
+
+          <div class="form-div-row">
+            <input type="hidden" id="clienteSeleccionado" required />
+            <input
+              type="text"
+              id="inputBuscarCliente"
+              placeholder="Buscar cliente" />
+            <button
+              class="btnConfirmar"
+              type="button"
+              onclick="buscarClientes()">
+              Buscar
+            </button>
+          </div>
+
+          <!-- Mostra clientes busqueda -->
+          <div class="divModal">
+            <div class="modal show" id="modalSeleccionCliente">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="pedidoModalLabel">Clientes</h5>
+                    <span class="close" onclick="cerrarModalSeleccionCliente()"
+                      >&times;</span
+                    >
+                  </div>
+                  <div class="modal-body">
+                    <div>
+                      <ul id="clientes">
+                        <!-- Los clientes coincidentes se agregarán aquí -->
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <!-- Articulos -->
+
+            <div class="form-div">
+              <label for="nombre"> Artículo </label>
+              <input
+                type="text"
+                class="form-control"
+                id="nombre"
+                placeholder="Nombre del artículo" />
+            </div>
+
+            <!-- Cantidad -->
+            <div form-div-label>
+              <label for="cantidad"> Cantidad </label>
+            </div>
+            <div class="form-div-row">
+              <input
+                type="number"
+                class="form-control"
+                id="cantidad"
+                placeholder="Cantidad" />
+
+              <button
+                type="button"
+                class="btnConfirmar"
+                onclick="agregarArticuloAlPedido()"
+                id="agregarArticulo">
+                Agregar
+              </button>
+            </div>
+          </div>
+
+          <div class="form-group-int mb-3">
+            <table class="table" id="tablaArticulos">
+              <thead>
+                <tr>
+                  <th>Nro.</th>
+                  <th>Artículo</th>
+                  <th>Cantidad</th>
+                  <th colspan="2">Acciones</th>
+                </tr>
+              </thead>
+              <tbody id="tablaArticulos">
+                <!-- Aquí se mostrarán los artículos agregados -->
+              </tbody>
+            </table>
+          </div>
+
+          <div class="form-div">
+            <label for="cadeteriaId">Cadetería:</label>
+            <select class="form-control" id="cadeteriaId" required></select>
+          </div>
+
+          <div class="form-div">
+            <label for="">Observaciones:</label>
+            <textarea
+              name=""
+              id="observacionesPedido"
+              cols="30"
+              rows="4"></textarea>
+          </div>
+
+          <div>
+            <button
+              type="button"
+              class="btnConfirmar"
+              id="btnConfirmarPedido"
+              onclick="agregarPedido()">
+              Confirmar Pedido
+            </button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <script src="/js/index.js"></script>
+    <script src="/js/agregar-pedido.js"></script>
+    <script src="/js/pdf.js"></script>
+    <script src="/js/logout.js"></script>
+
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script> -->
+  </body>
+</html>
